@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" ng-app="elantix">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        {% verbatim %}
+            <div class="container mrg-t">
+                <h1 class="pull-right">Users list</h1>
+                <cat-app></cat-app>
+            </div>
+        {% endverbatim %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="{% static 'app/js/angular/angular.js' %}"></script>
+        <script src="{% static 'app/js/router/angular1/angular_1_router.js' %}"></script>
+        <script src="{% static 'app/app.js' %}"></script>
+    </body>
+</html>

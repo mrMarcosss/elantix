@@ -1,0 +1,50 @@
+<div class="content">
+    <div class="row">
+        <dov class="col-md-2">
+            <form ng-submit="persons.submits(searchForm.$valid)" class="form-inline" name="searchForm" novalidate>
+                <div class="form-group">
+                    <input type="text" class="form-control"  id="searchFilter" placeholder="Search" ng-model="persons.searchName" required>
+                </div>
+            </form>
+        </dov>
+        <dov class="col-md-3">
+            <button class="btn btn-danger" ng-click="persons.clear()">clear</button>
+            <button class="btn btn-primary" ng-click="persons.sort('review.rewies_count')">count</button>
+            <button class="btn btn-success" ng-click="persons.sort('timestamp')">timestamp</button>
+        </dov>
+    </div>
+    <br>
+    <table class="table table-bordered">
+        <thead>
+            <th class="column">Date</th>
+            <th class="column">Name</th>
+            <th class="column">Last name</th>
+            <th class="column">Phone number</th>
+            <th class="column">Address</th>
+            <th class="column">Last review</th>
+            <th class="column">Reviews</th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="person in persons.persons | orderBy:persons.sortBy:persons.rev">
+                <td class="column">{{ person.timestamp |date }}</td>
+                <td class="column">{{ person.name }}</td>
+                <td class="column">{{ person.last_name }}</td>
+                <td class="column">{{ person.phone_number }}</td>
+                <td class="column">{{ person.address }}</td>
+                <td class="column">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-4"><small>{{ person.review.timestamp |date }}</small></div>
+                                <div class="col-md-4"><p ng-if="person.review.rating"><small>rating:</small> {{ person.review.rating }}</p></div>
+                                <div class="col-md-4"><b>{{ person.review.author }}</b></div>
+                            </div>
+                            <p class="last-review">{{ person.review.text }}</p>
+                        </div>
+                    </div>
+                </td>
+                <td class="column">{{ person.review.rewies_count ? person.review.rewies_count : 0}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
